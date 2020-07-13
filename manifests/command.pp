@@ -2,7 +2,7 @@
 define nrpe::command (
   $command,
   $ensure       = present,
-  $include_dir  = $nrpe::include_dir,
+  $include_dir  = $nrpe::include_dir ? { undef => "/etc/nrpe.d", default => "$nrpe::include_dir" },
   $package_name = $nrpe::package_name,
   $service_name = $nrpe::service_name,
   $libdir       = $nrpe::params::libdir,
